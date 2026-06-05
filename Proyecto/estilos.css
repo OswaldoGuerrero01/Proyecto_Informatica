@@ -1,0 +1,88 @@
+body{
+    margin: 0px;
+    background-image: url('biblioteca1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+h1{
+    color: rgb(173, 20, 84);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h3{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    background-color: rgba(141, 57, 164, 0.597);
+    margin-left: 210px;
+    margin-right: 210px;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+header{
+    background-color: rgb(29, 27, 27);
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    display: flex; 
+    margin-left: 40px;
+    margin-right: 40px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#articulo1{
+    background-color: rgba(198, 192, 192, 0.742);
+    text-align: center;
+    margin: 3px auto;
+    padding: 5px;
+    border-radius: 10px; /**/
+    width: 60%;
+}
+
+input{
+    padding: 8px;
+    margin: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: 0px;
+    background-color: rgba(246, 246, 236, 0.874);
+}
+
+button{
+    padding: 8px;
+    margin: 5px;
+    color: beige;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    background-color: rgba(14, 13, 15, 0.855);
+    border-style:inset;
+    border-radius: 10px;
+    border-width:5px;
+}
+
+ul{
+    list-style: none; /*Para eliminar la viñeta*/
+    padding: 0;
+    background: rgba(0, 0, 0, 0.393);
+    margin: 5px auto;
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+li{
+    padding: 0;
+    background: rgba(107, 13, 66, 0.651);
+    margin: 5px auto;
+    padding: 10px;
+    width: 250px;
+    border-radius: 5px;
+    color: rgb(252, 252, 252);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

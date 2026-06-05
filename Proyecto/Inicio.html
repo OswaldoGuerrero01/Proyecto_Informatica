@@ -1,0 +1,128 @@
+<html>
+
+    <head>
+        <title>Biblioteca en linea</title>
+        <link rel="stylesheet" href="estilos.css">
+    </head>
+
+    <body>
+
+        <header>
+        <h1>
+            📚 Biblioteca "Wham!" 📚
+        </h1>
+        </header>
+
+        <br> <br>
+
+        <article id="articulo1">
+        
+        <h3>Agregar un libro nuevo</h3>
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="text" id="autor" placeholder="Autor"> 
+        <br> <br>
+        <button onclick="agregarLibro(Libros)">Agregar Libro</button> 
+
+        <h3>Eliminar un libro de la biblioteca</h3>
+        <input type="text" id="buscar" placeholder="Buscar por nombre">
+        <br> <br>
+        <button onclick="buscarLi(Libros)">Eliminar Libro</button>
+
+        <br> <br>
+
+        <h3>Lista de Libros</h3>
+        <ul id="lista">Sin Libros Registrados</ul>
+        
+        </article>
+        
+        <script>
+            var Libros=[];
+
+            // Funcion "metodo burbuja" para odernar automaticamente los elementos en orden alfabetico
+            function ordenarLibros(Libros){
+                var title = document.getElementById("nombre").value; //Obtener valor del input con id "nombre"
+
+                for (let i = 0; i < Libros.length - 1; i++) { //Ciclo que se repite dependiendo de la cantidad de libros que haya en el arreglo
+                    for (let j = 0; j < Libros.length - 1 - i; j++) { //Ciclo que compara los elementos 1 por 1
+                        if (Libros[j].nombre.toLowerCase() > Libros[j + 1].nombre.toLowerCase()) { //Compara dos libros y los convierte a minusculas para evitar errores
+                            let temp = Libros[j]; //Almacena temporalemente el valor del libro, para no perderlo
+                            Libros[j] = Libros[j + 1]; //El libro se mueve a otra posicion
+                            Libros[j + 1] = temp; //El libro guardado en temp se coloca en la siguiente posicion
+                        }
+                    }
+                }
+            }
+
+            // Funcion para agregar dentro de la lista los libros agregados
+            function mostrarLista(Libros){
+                lista.innerHTML = ""; //Limpia la lista, evitando que los elementos se repitan
+
+                Libros.forEach(Libro => { //Ciclo que se repite una vez por cada elemento dentro del array "Libros"
+                    let li = document.createElement("li"); //Crea una etiqueta li y la almacena en una variable
+                    li.textContent = Libro.nombre + " - " + Libro.autor; //Almacena el texto dentro de la etiqueta li creada
+                    lista.appendChild(li); //Asigna el li dentro de la lista con id "lista"
+                });
+
+            }
+
+            // Funcion para agregar nuevos elementos y mostrarlos en la lista
+            function agregarLibro(Libros){
+
+                var nombre= document.getElementById("nombre").value; //Obtiene el valor del input "nombre"
+                var autor= document.getElementById("autor").value; //Obtiene el valor del input "autor"
+
+                if (nombre === "" || autor === "") { //Si los input estan vacios, entonces mostrar alert
+                    alert("Completa todos los campos");
+                    return;
+                }
+
+                Libros.push({nombre, autor}); //Ingresa los valores al array
+
+                ordenarLibros(Libros);
+
+                document.getElementById("nombre").value = ""; //Limpia input con id nombre
+                document.getElementById("autor").value = ""; //Limpia input con id autor
+
+                mostrarLista(Libros); //Llama la funcion mostrarLista
+
+            }
+
+            // Funcion para buscar un libro y eliminarlo
+            function buscarLi(Libros){
+
+                var busqueda = document.getElementById("buscar").value; //Obtiene valor del input "buscar"
+
+                if (Libros.length === 0) { //Si no hay libros registrados, entonces muestra alert
+                    alert("No hay libros para eliminar");
+                    return;
+                }
+                if (busqueda == ""){ //Si no hay elementos en el input, muestra alert
+                    alert("Llena los campos");
+                    return;
+                }
+
+                var indice = -1; //Variable que registra el indice de el arreglo "Libros", inicia con -1 porque representa que todavia no ha hecho la busqueda
+
+                for (var i = 0; i < Libros.length; i++){ //Ciclo que hace una busqueda dentro del arreglo "Libros"
+                    if (Libros[i].nombre.toLowerCase() === busqueda.toLowerCase()) { //Convierte el texto dentro de input "nombre" a minusculas para que la busqueda no dependa de mayusculas o minusculas
+                        indice = i; //Almacena el valor de i dentro del indice
+                        break;
+                    }
+                }
+
+                if (indice === -1){ //En caso de que el libro buscado no este dentro del arreglo, muestra alert
+                    alert("Libro no encontrado");
+                    return;
+                }
+
+                var eliminado = Libros.splice(indice, 1); //Almacena dentro de la variable "eliminado" el libro que se busco y lo elimina con la funcion "splice", el 1 representa que solo se elimina un elemento
+                alert("Eliminaste: " + eliminado[0].nombre); //Mustra el valor eliminado en un alert
+                document.getElementById("buscar").value = ""; //Limpia input con id buscar
+
+                mostrarLista(Libros); //Llama la funcion mostrarLista
+                
+            } 
+        </script>
+    </body>
+
+</html>
